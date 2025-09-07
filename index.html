@@ -11,20 +11,20 @@
                 display: flex;
                 flex-direction: column;
             }
-            footer {
-                text-align: center;
-                padding: 10px;
-                background-color: rgb(240,240,250);
-                border-top: 2px solid gray;
-            }
             header {
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 box-sizing: border-box;
-                background-color: rgb(130, 130, 130);
+                background-color: rgb(178, 202, 255);
                 padding: 5px 15px;
+            }
+            footer {
+                text-align: center;
+                padding: 10px;
+                background-color: rgb(240,240,250);
+                border-top: 2px solid gray;
             }
             .logo button {
                 background: none;
@@ -43,12 +43,14 @@
                 gap: 15px;
             }
             nav button {
-                border-radius: 5px;
+                border-radius: 10px;
                 padding: 8px 12px;
-                font-family: 'Times New Roman', serif;
+                font-family: 'Segoe UI', Arial, sans-serif;
                 font-size: 15px;
                 cursor: pointer;
                 transition: 0.3s;
+                background-color: rgb(178, 202, 255);
+                border: 0px;
             }
             .main-container {
                 display: flex; 
@@ -64,6 +66,7 @@
                 line-height: 0.25;
                 margin-bottom: 0px;
                 color: rgba(15, 15, 15, 0.925);
+                font-family: 'Segoe UI', Arial, sans-serif;
             }
             iframe {
                 width: 100%;
@@ -71,10 +74,13 @@
                 border: none;
             }
             a {
-                font-family: 'Times New Roman', serif;
+                font-family: 'Segoe UI', Arial, sans-serif;
                 font-size: 16px;
                 color: rgb(15, 15, 15);
                 text-decoration: none;
+            }
+            nav button:hover {
+                background-color: white;
             }
         </style>
     </head>
