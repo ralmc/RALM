@@ -20,15 +20,35 @@
             header {
                 width: 100%;
                 display: flex;
-                justify-content: flex-start;
+                align-items: center;
+                justify-content: space-between;
                 box-sizing: border-box;
                 background-color: rgb(130, 130, 130);
                 padding: 5px 15px;
             }
-            .logo img{
+            .logo button {
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+            .logo img {
                 height: 125px;
                 width: 150px;
                 margin-left: 10px;
+                background: none; 
+            }
+            nav {
+                display: flex;
+                gap: 15px;
+            }
+            nav button {
+                border-radius: 5px;
+                padding: 8px 12px;
+                font-family: 'Times New Roman', serif;
+                font-size: 15px;
+                cursor: pointer;
+                transition: 0.3s;
             }
             .main-container {
                 display: flex; 
@@ -37,7 +57,7 @@
             .contenido {
                 flex: 1;
                 background-color: rgb(240,240,250);
-                border-top: 2px solid rgb(105, 105, 105, 0.800);
+                border-top: 2px solid rgba(105, 105, 105, 0.800);
             }
             .abajo {
                 margin: 0;
@@ -61,25 +81,35 @@
     <body>
         <header>
             <div class="logo">
-                <a href="contenido.html" target="contenido">
-                    <img src="RALM_SF.png">
-                </a>
+                <button onclick="cargarPagina('contenido.html')">
+                    <img src="RALM_SF.png" alt="RALM">
+                </button>
             </div>
             <nav>
-                -- VAMOS A TRABAJAR COMO NAV MUCHACHOS / A USTEDES LES TOCA EL FRAME NAMAS HAGANLO UNA VEZ Y YAP
+                <button onclick="cargarPagina('mision.html')">Misión</button>
+                <button onclick="cargarPagina('vision.html')">Visión</button>
+                <button onclick="cargarPagina('objetivos.html')">Objetivos</button>
+                <button onclick="cargarPagina('servicios.html')">Servicios</button>
+                <button onclick="cargarPagina('portafolio.html')">Portafolio</button>
             </nav>
         </header>
         <div class="main-container">
             <div class="contenido">
-                <iframe src="contenido.html" name="contenido"></iframe>
+                <iframe src="contenido.html" name="contenido" id="contenido"></iframe>
             </div>
         </div>
         <footer>
             <div class="abajo">
                 <p>Correo ~ <a href="mailto:ralm.company9@gmail.com">ralm.company9@gmail.com</a></p>
-                <p>Telefono ~ <a href="tel:+525611223344">+52 56 1122 3344</a></p>
+                <p>Teléfono ~ <a href="tel:+525611223344">+52 56 1122 3344</a></p>
                 <p>Ubicación ~ <a href="https://www.google.com/maps?q=Mar+Mediterráneo+227,+11420+Ciudad+de+México,+Ciudad+de+México" target="_blank">Mar Mediterráneo 227, 11420 Ciudad de México, Ciudad de México</a></p>
             </div>
         </footer>
+
+        <script>
+            function cargarPagina(pagina) {
+                document.getElementById("contenido").src = pagina;
+            }
+        </script>
     </body>
 </html>
