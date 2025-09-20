@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RALM</title>
+        <title>RALMc</title>
         <style>
             body {
                 margin: 0;
@@ -15,22 +15,12 @@
                 width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
+                gap: 50px;
                 box-sizing: border-box;
-                background-color: rgb(178, 202, 255);
+                background-color: rgb(5, 44, 77);
                 padding: 5px 15px;
-            }
-            footer {
-                text-align: center;
-                padding: 10px;
-                background-color: rgb(240, 240, 250);
-                border-top: 2px solid gray;
-            }
-            .logo button {
-                background: none;
-                border: none;
-                padding: 0;
-                cursor: pointer;
+                position: fixed;
             }
             .logo img {
                 height: 125px;
@@ -43,6 +33,7 @@
                 gap: 15px;
                 border: 2px solid rgb(245, 242, 235);
                 border-radius: 10px;
+                align-items: center;
             }
             nav button {
                 border-radius: 10px;
@@ -51,29 +42,40 @@
                 font-size: 15px;
                 cursor: pointer;
                 transition: 0.3s;
-                background-color: rgb(178, 202, 255);
+                background-color: rgb(5, 44, 77);
+                color: whitesmoke;
                 border: 0px;
             }
-            .main-container {
+            nav button:hover {
+                background-color: rgb(4, 18, 43);
+            }
+            .contenedor-principal {
+                margin-top: 140px;
+                background-color: rgb(240, 240, 250);
                 display: flex; 
                 flex: 1; 
             }
-            .contenido {
-                flex: 1;
-                background-color: rgb(240,240,250);
-                border-top: 2px solid rgba(105, 105, 105, 0.800);
+            .contenedor-secundario {
+                max-width: 90%;
+                margin: 60px auto;
+                background: #fff;
+                border-radius: 18px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                padding: 40px 32px;
+                text-align: center;
+            }
+            footer {
+                text-align: center;
+                padding: 10px;
+                background-color: rgb(240, 240, 250);
+                border-top: 2px solid gray;
             }
             .abajo {
                 margin: 0;
-                line-height: 0.25;
+                line-height: 0.35;
                 margin-bottom: 0px;
-                color: rgba(15, 15, 15, 0.925);
+                color: rgba(15, 15, 15, 0.825);
                 font-family: 'Segoe UI', Arial, sans-serif;
-            }
-            iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
             }
             a {
                 font-family: 'Segoe UI', Arial, sans-serif;
@@ -81,44 +83,142 @@
                 color: rgb(15, 15, 15);
                 text-decoration: none;
             }
-            nav button:hover {
-                background-color: white;
+            h1 {
+                margin: 0 0 16px 0;
+                font-size: 2.2em;
+                color: #333;
+                letter-spacing: 1px;
+            }
+            h2 {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                margin: 0 0 16px 0;
+                font-size: 5.2em;
+                color: rgb(5, 44, 77);
+                letter-spacing: 1.5px;
+            }
+            .contenedor-secundario p {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                color: #555;
+                font-size: 1.15em;
+                line-height: 1.7;
+            }
+            .divider {
+                width: 75%;
+                height: 4px;
+                background: #4a90e2;
+                margin: 24px auto;
+                border-radius: 2px;
             }
         </style>
     </head>
     <body>
         <header>
             <div class="logo">
-                <button onclick="cargarPagina('contenido.html')">
-                    <img src="RALM_SF.png" alt="RALM">
+                <button onclick="irArriba()" style="background:none; border:none; cursor:pointer;">
+                    <img src="RALM_LOGO_SF.png" alt="RALMc">
                 </button>
             </div>
             <nav>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="button" onclick="cargarPagina('mision.html')">Misión</button>
-                    <button class="btn btn-primary" type="button" onclick="cargarPagina('vision.html')">Visión</button>
-                    <button class="btn btn-primary" type="button" onclick="cargarPagina('objetivos.html')">Objetivos</button>
-                    <button class="btn btn-primary" type="button" onclick="cargarPagina('servicios.html')">Servicios</button>
-                    <button class="btn btn-primary" type="button" onclick="cargarPagina('portafolio.html')">Portafolio</button>
+                    <button class="btn btn-primary me-md-2" type="button" onclick="document.getElementById('mision').scrollIntoView({ behavior: 'smooth' });">Misión</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('vision').scrollIntoView({ behavior: 'smooth' });">Visión</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('objetivos').scrollIntoView({ behavior: 'smooth' });">Objetivos</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('eslogan').scrollIntoView({ behavior: 'smooth' });">Eslogan</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('filosofia').scrollIntoView({ behavior: 'smooth' });">Filosofía</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('valores').scrollIntoView({ behavior: 'smooth' });">Valores</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('politicas').scrollIntoView({ behavior: 'smooth' });">Políticas</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('lineamientos').scrollIntoView({ behavior: 'smooth' });">Lineamientos</button>
                 </div>
             </nav>
         </header>
-        <div class="main-container">
-            <div class="contenido">
-                <iframe src="contenido.html" name="contenido" id="contenido"></iframe>
+        <div class="contenedor-principal">
+            <div class="contenedor-secundario">
+                <h2>RALMc</h2>
+                <p id="mision"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestra Misión</h1>
+                <div class="divider"></div>
+                <p>
+                   Somos una empresa dedicada al desarrollo de software, enfocada en dar una solución tecnológica que facilite y agilice el proceso de 
+                   inscripción al servicio social y en sus diferentes áreas en el CECyT 9. Con el objetivo de brindar a los estudiantes una herramienta 
+                   práctica y eficiente
+                </p>
+                <p id="vision"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestra Visión</h1>
+                <div class="divider"></div>
+                <p>
+                   Seremos una empresa reconocida por el desarrollo de soluciones tecnológicas e innovadoras que optimicen procesos del servicio social 
+                   dentro del CECyT 9. Queremos que nos describan como una empresa responsable, colaborativa, transparente y accesible para nuestra comunidad. 
+                   En donde facilitaremos el proceso para realizar los trámites requeridos para el servicio social así como consecuencia, el entorno de la misma.
+                </p>
+                <p id="objetivos"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestros Objetivos</h1>
+                <div class="divider"></div>
+                <p>· Desarrollar y mantener una plataforma accesible y confiable, que permita la vinculación directa entre estudiantes, empresas e instituciones educativas.</p>
+                <p>· Impulsar la responsabilidad y la transparencia en todos los procesos de la empresa, garantizando confianza en las interacciones.</p>
+                <p>· Fomentar la colaboración estratégica con empresas y la institución para ofrecer proyectos que contribuyan al aprendizaje y la innovación.</p>
+                <p>· Ampliar las oportunidades de los estudiantes, facilitando experiencias prácticas que fortalezcan sus conocimientos y su perfil profesional.</p>
+                <p>· Proveer a las empresas soluciones innovadoras mediante el talento de los estudiantes, optimizando tiempo, recursos y procesos, y fortaleciendo su competitividad.</p>
+                <p id="eslogan"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestro Eslogan</h1>
+                <div class="divider"></div>
+                <p><strong>Conecta, innova, avanza</strong></p>
+                <p id="filosofia"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestra Filosofía</h1>
+                <div class="divider"></div>
+                <p>En RALM asumimos un compromiso con la excelencia en el desarrollo de software, fundamentado en la innovación, la calidad y la responsabilidad social. Reconocemos que las personas constituyen el pilar esencial de la organización, por lo que fomentamos su desarrollo profesional, ético y personal. Consideramos al cliente como el centro de nuestras acciones, garantizando soluciones que respondan a sus necesidades y contribuyan a su beneficio. Asimismo, mantenemos un compromiso con el entorno social, ambiental y comunitario, promoviendo prácticas sostenibles que fortalezcan el progreso colectivo.</p>
+                <p id="valores"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestros Valroes</h1>
+                <div class="divider"></div>
+                <p><strong>Responsabilidad</strong><br>
+                En RALMc entendemos la responsabilidad como el compromiso integral con lo que hacemos. No solo cumplimos con nuestras tareas y tiempos, también asumimos las consecuencias de nuestras decisiones y buscamos siempre ofrecer lo mejor a nuestros clientes, colaboradores y comunidad.</p>
+                <p><strong>Colaboración</strong><br>
+                Fomentamos el trabajo en equipo, donde cada persona aporta su conocimiento y habilidades para alcanzar objetivos comunes. La unión de esfuerzos nos permite crecer y ofrecer soluciones más efectivas.</p>
+                <p><strong>Transparencia</strong><br>
+                Actuamos con claridad y honestidad en todos nuestros procesos. La comunicación abierta con clientes, colaboradores y aliados nos permite construir relaciones sólidas y de confianza.</p>
+                <p><strong>Accesibilidad</strong><br>
+                Nos aseguramos de que nuestros productos y servicios estén al alcance de todos, ofreciendo atención cercana, soluciones claras y un trato humano que facilite la experiencia de cada persona.</p>
+                <p><strong>Innovación</strong><br>
+                En RALM buscamos constantemente nuevas formas de mejorar, adaptándonos a los cambios y ofreciendo soluciones creativas y eficientes. Creemos que innovar es la clave para mantenernos vigentes y generar un impacto positivo en el futuro.</p>
+                <p id="politicas"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestras Politicas</h1>
+                <div class="divider"></div>
+                <p>●        <strong>En toda la organización</strong>: Consolidar una cultura basada en la ética, la innovación y la mejora continua.<br>
+                ●       <strong>En los distintos departamentos</strong>: Asegurar la coordinación efectiva, la eficiencia en los procesos y el cumplimiento de los objetivos como organización.<br>
+                ●       <strong>En los servicios</strong>: Brindar soluciones tecnológicas confiables, seguras y con altos estándares de calidad.<br>
+                ●       <strong>En las actividades</strong>: Desarrollar cada tarea con responsabilidad, transparencia y apego a las mejores prácticas.<br>
+                ●       <strong>En los proyectos</strong>: Implementar metodologías eficientes que garanticen la entrega oportuna y satisfactoria de resultados, alineados con los requerimientos del cliente.</p>
+                <p id="lineamientos"></p>
+                <br><br><br><br><br><br><br><br>
+                <h1>Nuestros Lineamientos</h1>
+                <div class="divider"></div>
+                <p><strong>Recursos humanos</strong>: Establecer programas de capacitación continua, promover la inclusión, garantizar el respeto y favorecer el crecimiento integral del personal.<br>
+                <strong>Recursos técnicos</strong>: Adoptar y mantener tecnologías de vanguardia, seguras y escalables, asegurando su constante actualización.<br>
+                <strong>Recursos financieros</strong>: Administrar con responsabilidad los recursos económicos, priorizando la inversión en innovación y la optimización de costos.<br>
+                <strong>Orientados al cliente</strong>: Mantener una comunicación clara y profesional, ofreciendo atención personalizada y garantizando que cada solución tecnológica exceda las expectativas planteadas.</p>
+                <br><br><br><br><br><br><br><br>
             </div>
         </div>
         <footer>
             <div class="abajo">
-                <p>Correo ~ <a href="mailto:ralm.company9@gmail.com">ralm.company9@gmail.com</a></p>
-                <p>Teléfono ~ <a href="tel:+525611223344">+52 56 1122 3344</a></p>
-                <p>Ubicación ~ <a href="https://www.google.com/maps?q=Mar+Mediterráneo+227,+11420+Ciudad+de+México,+Ciudad+de+México" target="_blank">Mar Mediterráneo 227, 11420 Ciudad de México, Ciudad de México</a></p>
+                <p><strong>Correo</strong> ~ <a href="mailto:ralm.company9@gmail.com">ralm.company9@gmail.com</a></p>
+                <p><strong>Teléfono</strong> ~ <a href="tel:+525611223344">+52 56 1122 3344</a></p>
+                <p><strong>Ubicación</strong> ~ <a href="https://www.google.com/maps?q=Mar+Mediterráneo+227,+11420+Ciudad+de+México,+Ciudad+de+México" target="_blank">Mar Mediterráneo 227, 11420 Ciudad de México, Ciudad de México</a></p>
             </div>
         </footer>
 
         <script>
-            function cargarPagina(pagina) {
-                document.getElementById("contenido").src = pagina;
+            function irArriba() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             }
         </script>
     </body>
