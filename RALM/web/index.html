@@ -19,7 +19,7 @@
                 justify-content: center;
                 gap: 50px;
                 box-sizing: border-box;
-                background-color: rgb(5, 44, 77);
+                background-color: rgb(0,0,0);
                 padding: 5px 15px;
                 position: fixed;
                 z-index: 1000;
@@ -41,23 +41,48 @@
                 justify-content: center;
                 gap: 10px;
                 padding: 10px 15px;
-                background-color: rgb(5, 44, 77);
                 border-radius: 10px;
                 align-items: center;
             }
             nav button {
+                background-color: transparent;
+                color: white;
+                border: 1px solid transparent;
                 border-radius: 10px;
                 padding: 8px 12px;
                 font-family: 'Segoe UI', Arial, sans-serif;
                 font-size: 15px;
                 cursor: pointer;
                 transition: 0.3s;
-                background-color: rgb(5, 44, 77);
-                color: whitesmoke;
-                border: 0px;
+                position: relative;
+                overflow: hidden;
+            }
+            nav button:not(.logo-btn)::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background-color: white;
+                transition: width 0.8s ease, left 0.6s ease;
+                transform: translateX(-50%);
+            }
+            nav button:not(.logo-btn):hover::before {
+                width: 100%;
+                transform: translateX(-50%) scaleX(1);
             }
             nav button:hover {
+                color: white;
+            }
+            nav .btn-primary {
+                background-color: transparent;
+                border: 1px solid transparent;
+                color: white;
+            }
+            nav .btn-primary:hover {
                 background-color: rgb(4, 18, 43);
+                border: 1px transparent;
             }
             .contenedor-principal {
                 margin-top: 100px;
@@ -143,108 +168,135 @@
                 margin: 24px auto;
                 border-radius: 2px;
             }
+            .card-header {
+                background-color: white;
+                color: black;
+                transition: background-color 0.4s ease, color 0.4s ease;
+            }
+            .card:hover .card-header {
+                background-color: rgb(74, 144, 226);
+                color: white;
+            }
+            .card {
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
+            }
+            .card:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                transform: translateY(-5px);
+            }
         </style>
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgb(5, 44, 77); border-radius: 10px; padding: 0.3rem 1rem;">
+            <nav class="navbar navbar-expand-md navbar-dark" style="background-color: rgb(0,0,0); border-radius: 10px; padding: 0.3rem 1rem;">
                 <div class="container-fluid">
                     <div class="logo">
-                        <button onclick="irArriba()" style="background:none; border:none; cursor:pointer;">
+                        <button class="logo-btn" onclick="irArriba()" style="background:none; border:none; cursor:pointer;">
                             <img src="RALM_LOGO_SF.png" alt="RALMc" style="height: 125px; width: 150px; margin-left: 10px;">
                         </button>
                     </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-                            <div class="navbar-nav gap-2">
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('mision').scrollIntoView({ behavior: 'smooth' });">Misión</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('vision').scrollIntoView({ behavior: 'smooth' });">Visión</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('objetivos').scrollIntoView({ behavior: 'smooth' });">Objetivos</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('eslogan').scrollIntoView({ behavior: 'smooth' });">Eslogan</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('filosofia').scrollIntoView({ behavior: 'smooth' });">Filosofía</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('valores').scrollIntoView({ behavior: 'smooth' });">Valores</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('politicas').scrollIntoView({ behavior: 'smooth' });">Políticas</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('lineamientos').scrollIntoView({ behavior: 'smooth' });">Lineamientos</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });">Servicios</button>
-                                <button class="btn btn-primary" type="button" onclick="document.getElementById('portafolio').scrollIntoView({ behavior: 'smooth' });">Portafolio</button>
-                          </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                        <div class="navbar-nav gap-2">
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('nosotros').scrollIntoView({ behavior: 'smooth' });">Nosotros</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('objetivos').scrollIntoView({ behavior: 'smooth' });">Objetivos</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('filosofia').scrollIntoView({ behavior: 'smooth' });">Filosofía</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('valores').scrollIntoView({ behavior: 'smooth' });">Valores</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('politicas').scrollIntoView({ behavior: 'smooth' });">Políticas</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('lineamientos').scrollIntoView({ behavior: 'smooth' });">Lineamientos</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });">Servicios</button>
+                            <button class="btn btn-primary" type="button" onclick="document.getElementById('portafolio').scrollIntoView({ behavior: 'smooth' });">Portafolio</button>
+                        </div>
                     </div>
                 </div>
             </nav>
         </header>
         <div class="contenedor-principal">
             <div class="contenedor-secundario">
-                <h2>RALMc</h2>
-                <p id="mision"></p>
+                <div class="Inicio">
+                    <h2>RALMc</h2>
+                    <p>Conecta, innova, avanza</p>
+                </div>
+                <p id="nosotros"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestra Misión</h1>
+                <h1>SOBRE NOSOTROS</h1>
                 <div class="divider"></div>
-                <p>
-                   Somos una empresa dedicada al desarrollo de software, enfocada en dar una solución tecnológica que facilite y agilice el proceso de 
-                   inscripción al servicio social y en sus diferentes áreas en el CECyT 9. Con el objetivo de brindar a los estudiantes una herramienta 
-                   práctica y eficiente
-                </p>
-                <p id="vision"></p>
-                <br><br><br><br><br><br><br><br>
-                <h1>Nuestra Visión</h1>
-                <div class="divider"></div>
-                <p>
-                   Seremos una empresa reconocida por el desarrollo de soluciones tecnológicas e innovadoras que optimicen procesos del servicio social 
-                   dentro del CECyT 9. Queremos que nos describan como una empresa responsable, colaborativa, transparente y accesible para nuestra comunidad. 
-                   En donde facilitaremos el proceso para realizar los trámites requeridos para el servicio social así como consecuencia, el entorno de la misma.
-                </p>
+                <div class="separador1">
+                    <div class="card mb-4" style="max-width: 26rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>MISIÓN</strong></div>
+                        <div class="card-body" style="padding: 5px 8px;">
+                            <p class="card-text">Somos una empresa dedicada al desarrollo de software, enfocada en dar una solución tecnológica que facilite y agilice el proceso de 
+                            inscripción al servicio social y en sus diferentes áreas en el CECyT 9. Con el objetivo de brindar a los estudiantes una herramienta 
+                            práctica y eficiente</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4" style="max-width: 26rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>VISIÓN</strong></div>
+                        <div class="card-body" style="padding: 5px 8px;">
+                            <p class="card-text">Seremos una empresa reconocida por el desarrollo de soluciones tecnológicas e innovadoras que optimicen procesos del servicio social 
+                            dentro del CECyT 9. Queremos que nos describan como una empresa responsable, colaborativa, transparente y accesible para nuestra comunidad. 
+                            En donde facilitaremos el proceso para realizar los trámites requeridos para el servicio social así como consecuencia, el entorno de la misma.</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4" style="max-width: 26rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>OBJETIVOS</strong></div>
+                        <div class="card-body" style="padding: 5px 8px;">
+                            <p class="card-text">· Desarrollar y mantener una plataforma accesible y confiable, que permita la vinculación directa entre estudiantes, empresas e instituciones educativas.<br>
+                            · Impulsar la responsabilidad y la transparencia en todos los procesos de la empresa, garantizando confianza en las interacciones.<br>
+                            · Fomentar la colaboración estratégica con empresas y la institución para ofrecer proyectos que contribuyan al aprendizaje y la innovación.<br>
+                            · Ampliar las oportunidades de los estudiantes, facilitando experiencias prácticas que fortalezcan sus conocimientos y su perfil profesional.<br>
+                            · Proveer a las empresas soluciones innovadoras mediante el talento de los estudiantes, optimizando tiempo, recursos y procesos, y fortaleciendo su competitividad.</p>
+                        </div>
+                    </div>
+                </div>
                 <p id="objetivos"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestros Objetivos</h1>
+                <h1>NUESTROS OBJETIVOS</h1>
                 <div class="divider"></div>
                 <p>· Desarrollar y mantener una plataforma accesible y confiable, que permita la vinculación directa entre estudiantes, empresas e instituciones educativas.</p>
                 <p>· Impulsar la responsabilidad y la transparencia en todos los procesos de la empresa, garantizando confianza en las interacciones.</p>
                 <p>· Fomentar la colaboración estratégica con empresas y la institución para ofrecer proyectos que contribuyan al aprendizaje y la innovación.</p>
                 <p>· Ampliar las oportunidades de los estudiantes, facilitando experiencias prácticas que fortalezcan sus conocimientos y su perfil profesional.</p>
                 <p>· Proveer a las empresas soluciones innovadoras mediante el talento de los estudiantes, optimizando tiempo, recursos y procesos, y fortaleciendo su competitividad.</p>
-                <p id="eslogan"></p>
-                <br><br><br><br><br><br><br><br>
-                <h1>Nuestro Eslogan</h1>
-                <div class="divider"></div>
-                <p><strong>Conecta, innova, avanza</strong></p>
                 <p id="filosofia"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestra Filosofía</h1>
+                <h1>NUESTRA FILOSOFIA</h1>
                 <div class="divider"></div>
                 <p>En RALM asumimos un compromiso con la excelencia en el desarrollo de software, fundamentado en la innovación, la calidad y la responsabilidad social. Reconocemos que las personas constituyen el pilar esencial de la organización, por lo que fomentamos su desarrollo profesional, ético y personal. Consideramos al cliente como el centro de nuestras acciones, garantizando soluciones que respondan a sus necesidades y contribuyan a su beneficio. Asimismo, mantenemos un compromiso con el entorno social, ambiental y comunitario, promoviendo prácticas sostenibles que fortalezcan el progreso colectivo.</p>
                 <p id="valores"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestros Valores</h1>
+                <h1>NUESTROS VALORES</h1>
                 <div class="divider"></div>
                 <div class="separador1">
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Responsabilidad</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>RESPONSABILIDAD</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">En RALMc entendemos la responsabilidad como el compromiso integral con lo que hacemos. No solo cumplimos con nuestras tareas y tiempos, también asumimos las consecuencias de nuestras decisiones y buscamos siempre ofrecer lo mejor a nuestros clientes, colaboradores y comunidad.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Colaboración</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>COLABORACIÓN</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Fomentamos el trabajo en equipo, donde cada persona aporta su conocimiento y habilidades para alcanzar objetivos comunes. La unión de esfuerzos nos permite crecer y ofrecer soluciones más efectivas.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Transparencia</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>TRANSPARENCIA</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Actuamos con claridad y honestidad en todos nuestros procesos. La comunicación abierta con clientes, colaboradores y aliados nos permite construir relaciones sólidas y de confianza.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Accesibilidad</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>ACCESEBILIDAD</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Nos aseguramos de que nuestros productos y servicios estén al alcance de todos, ofreciendo atención cercana, soluciones claras y un trato humano que facilite la experiencia de cada persona.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Innovación</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>INNOVACIÓN</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">En RALM buscamos constantemente nuevas formas de mejorar, adaptándonos a los cambios y ofreciendo soluciones creativas y eficientes. Creemos que innovar es la clave para mantenernos vigentes y generar un impacto positivo en el futuro.</p>
                         </div>
@@ -252,35 +304,35 @@
                 </div>
                 <p id="politicas"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestras Politicas</h1>
+                <h1>NUESTRAS POLITICAS</h1>
                 <div class="divider"></div>
                 <div class="separador1">
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>En toda la organización</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>EN TODA LA ORGANIZACIÓN</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Consolidar una cultura basada en la ética, la innovación y la mejora continua.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>En los distintos departamentos</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>EN LOS DISTINTOS DEPARTAMENTOS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">La coordinación efectiva, la eficiencia en los procesos y el cumplimiento de los objetivos como organización.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>En los servicios</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>EN LOS SERVICIOS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Brindar soluciones tecnológicas confiables, seguras y con altos estándares de calidad.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>En las actividades</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>EN LAS ACTIVADES</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Desarrollar cada tarea con responsabilidad, transparencia y apego a las mejores prácticas.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>En los proyectos</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>EN LOS PROYECTOS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Implementar metodologías eficientes que garanticen la entrega oportuna y satisfactoria de resultados, alineados con los requerimientos del cliente.</p>
                         </div>
@@ -288,29 +340,29 @@
                 </div>
                 <p id="lineamientos"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestros Lineamientos</h1>
+                <h1>NUESTROS LINEAMIENTOS</h1>
                 <div class="divider"></div>
                 <div class="separador1">
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Recursos humanos</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>RECURSOS HUMANOS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Establecer programas de capacitación continua, promover la inclusión, garantizar el respeto y favorecer el crecimiento integral del personal.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Recursos técnicos</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>RECURSOS TÉCNICOS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Adoptar y mantener tecnologías de vanguardia, seguras y escalables, asegurando su constante actualización.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Recursos financieros</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>RECURSOS FINANCIEROS</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Administrar con responsabilidad los recursos económicos, priorizando la inversión en innovación y la optimización de costos.</p>
                         </div>
                     </div>
-                    <div class="card mb-4" style="max-width: 18rem; border: 2px solid rgb(74, 144, 226); border-radius: 0.75rem;">
-                        <div class="card-header"><strong>Orientados al cliente</strong></div>
+                    <div class="card mb-4" style="max-width: 18rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
+                        <div class="card-header"><strong>ORIENTADOS AL CLIENTE</strong></div>
                         <div class="card-body" style="padding: 5px 8px;">
                             <p class="card-text">Mantener una comunicación clara y profesional, ofreciendo atención personalizada y garantizando que cada solución tecnológica exceda las expectativas planteadas.</p>
                         </div>
@@ -318,7 +370,7 @@
                 </div>
                 <p id="servicios"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestros Servicios</h1>
+                <h1>NUESTROS SERVICIOS</h1>
                 <div class="divider"></div>
                 <p>· Plataforma web y móvil de vinculación entre estudiantes, empresas e instituciones.<br>
                    · Gestión de proyectos colaborativos con seguimiento y transparencia.<br>
@@ -328,7 +380,7 @@
                 </p>
                 <p id="portafolio"></p>
                 <br><br><br><br><br><br><br><br>
-                <h1>Nuestro Portafolio</h1>
+                <h1>NUESTRO PORTAFOLIO</h1>
                 <div class="divider"></div>
                 <p>· Plataforma que conecta a estudiantes con empresas para realizar proyectos reales.<br>
                 · Página web para venta de piezas de autos chocados, confiable y accesible.<br>
