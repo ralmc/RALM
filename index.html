@@ -5,12 +5,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RALMc</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&family=Bitcount:wght@100..900&display=swap" rel="stylesheet">
+
         <style>
-            body {
-                margin: 0;
-                min-height: 100vh;
+            .degradado-titulo {
+                width: 100%;             
+                height: 100vh; 
+                border-radius: 0px;
+                color: white;
+                text-align: left;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
+                background: linear-gradient(270deg, #1465bb, #003785, #81c9fa);
+                background-size: 600% 600%;
+                animation: gradientAnimation 4s ease infinite;
+            }
+            @keyframes gradientAnimation {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            .degradado-titulo h2, .degradado-titulo p{
+                margin-left: 150px;
+                color: white;
+                position: relative;
+                z-index: 1;
+                font-family: 'Bitcount', sans-serif;
+            }
+            .bitcount-letritas {
+                font-family: "Bitcount", system-ui;
+                font-optical-sizing: auto;
+                font-weight: 100;
+                font-style: normal;
+                font-variation-settings:
+                "slnt" 0,
+                "CRSV" 0.5,
+                "ELSH" 0,
+                "ELXP" 0;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
             }
             header {
                 width: 100%;
@@ -25,7 +63,6 @@
                 z-index: 1000;
             }
             nav {
-                position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
@@ -85,10 +122,12 @@
                 border: 1px transparent;
             }
             .contenedor-principal {
-                margin-top: 100px;
+                margin-top: 0px;
                 background-color: rgb(240, 240, 250);
                 display: flex; 
                 flex: 1; 
+                padding: 50px 20px;
+                margin: 0px;
             }
             .contenedor-secundario {
                 max-width: 90%;
@@ -116,7 +155,7 @@
                 letter-spacing: 1px;
             }
             h2 {
-                font-family: 'Segoe UI', Arial, sans-serif;
+                font-family: 'Cormorant Garamond', serif;
                 margin: 0 0 16px 0;
                 font-size: 5.2em;
                 color: rgb(5, 44, 77);
@@ -165,6 +204,39 @@
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
                 transform: translateY(-5px);
             }
+            .filosofia {
+            margin-top: 50px;
+            }
+            .btn-nav-like {
+                background-color: transparent;
+                color: white;
+                border: 1px solid transparent;
+                border-radius: 10px;
+                font-size: 15px;
+                cursor: pointer;
+                transition: 0.3s;
+                position: relative;
+                overflow: hidden;
+                font-size: 0.5em;
+            }
+            .btn-nav-like::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background-color: white;
+                transition: width 0.8s ease, left 0.6s ease;
+                transform: translateX(-50%);
+            }
+            .btn-nav-like:hover::before {
+                width: 100%;
+                transform: translateX(-50%) scaleX(1);
+            }
+            .btn-nav-like:hover {
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -192,12 +264,15 @@
                 </div>
             </nav>
         </header>
+        <div class="degradado-titulo">
+            <h2 style="font-size: 15em;">RALMc</h2>
+            <p style="font-size: 5em;">Conecta, innova, avanza</p>
+            <div style="margin-left: 150px; font-size: 2.5em; font-family: 'Bitcount', sans-serif; font-size: 5em; ">
+                <button class="btn-nav-like" type="button" onclick="irAbajo()">CONTACTANOS</button>
+            </div>
+        </div>
         <div class="contenedor-principal">
             <div class="contenedor-secundario">
-                <div class="Inicio">
-                    <h2>RALMc</h2>
-                    <p>Conecta, innova, avanza</p>
-                </div>
                 <p id="nosotros"></p>
                 <br><br><br><br><br><br><br>
                 <h1>SOBRE NOSOTROS</h1>
@@ -210,6 +285,7 @@
                             inscripción al servicio social y en sus diferentes áreas en el CECyT 9. Con el objetivo de brindar a los estudiantes una herramienta 
                             práctica y eficiente</p>
                         </div>
+                        
                     </div>
                     <div class="card mb-4" style="max-width: 27rem; border: 3px solid rgb(74, 144, 226); border-radius: 0.75rem;">
                         <div class="card-header"><strong>VISIÓN</strong></div>
@@ -266,11 +342,17 @@
                             <p class="card-text">En RALM buscamos constantemente nuevas formas de mejorar, adaptándonos a los cambios y ofreciendo soluciones creativas y eficientes. Creemos que innovar es la clave para mantenernos vigentes y generar un impacto positivo en el futuro.</p>
                         </div>
                     </div>
-                    <p style="text-align: center; font-size: 1.35em; color: black"><strong>FILOSOFIA</strong></p>
-                    <p style="margin-left: 170px; margin-right: 170px; text-align: justify-all;">En RALM asumimos un compromiso con la excelencia en el desarrollo de software, fundamentado en la innovación, la calidad y la responsabilidad social.
+                <div class="filosofia">
+                <p style="text-align: center; font-size: 1.35em; color: black;">
+                    <strong>FILOSOFÍA</strong>
+                </p>
+                <p style="margin-left: 170px; margin-right: 170px; text-align: justify;">
+                   En RALM asumimos un compromiso con la excelencia en el desarrollo de software, fundamentado en la innovación, la calidad y la responsabilidad social.
                    Reconocemos que las personas constituyen el pilar esencial de la organización, por lo que fomentamos su desarrollo profesional, ético y personal.
                    Consideramos al cliente como el centro de nuestras acciones, garantizando soluciones que respondan a sus necesidades y contribuyan a su beneficio.
-                   Asimismo, mantenemos un compromiso con el entorno social, ambiental y comunitario, promoviendo prácticas sostenibles que fortalezcan el progreso colectivo.</p>
+                   Asimismo, mantenemos un compromiso con el entorno social, ambiental y comunitario, promoviendo prácticas sostenibles que fortalezcan el progreso colectivo.
+                </p>
+                </div>
                 </div>
                 <br><br><br><br><br><br><br><br><br><br>
                 <p id="politicas"></p>
@@ -402,6 +484,12 @@
                     top: 0,
                     behavior: 'smooth'
                 });
+            }
+            function irAbajo() {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                })
             }
         </script>
     </body>
